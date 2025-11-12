@@ -8,8 +8,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="../static/css/styles.css" />
+    <link rel="stylesheet" href="../static/css/styles.css?v=2.0" />
     <style>
+      /* Force purple gradient background */
+      body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        min-height: 100vh;
+      }
+      
       .model-selector {
         margin-bottom: 20px;
         padding: 15px;
@@ -44,28 +50,36 @@
       .model-option label {
         display: block;
         padding: 12px 15px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 2px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid rgba(0, 0, 0, 0.1);
         border-radius: 8px;
         cursor: pointer;
         transition: all 0.3s ease;
         text-align: center;
+        color: #000;
+        font-weight: 600;
       }
       
       .model-option input[type="radio"]:checked + label {
-        background: rgba(56, 182, 255, 0.2);
-        border-color: #38b6ff;
-        color: #38b6ff;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-color: #667eea;
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
       }
       
       .model-option label:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 1);
+        border-color: #667eea;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        color: #000;
       }
       
       .model-description {
         font-size: 0.85em;
-        opacity: 0.8;
+        color: #333;
+        opacity: 0.9;
         margin-top: 5px;
       }
       
@@ -451,6 +465,6 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="/static/js/main_dl.js"></script>
+    <script src="/static/js/main_dl.js?v=2.0"></script>
   </body>
 </html>

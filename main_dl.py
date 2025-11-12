@@ -11,11 +11,12 @@ from urllib.parse import urlparse
 import uvicorn
 import tensorflow as tf
 from deep_learning_model import SpamDetectorDL
+from financial_chatbot import FinancialChatbot
 import os
 
 app = FastAPI(
-    title="Advanced Spam Text Detector API",
-    description="API for detecting spam texts using both traditional ML and Deep Learning models",
+    title="FinSecure AI API",
+    description="Complete financial security platform with spam detection, financial advice, and budget tracking",
     version="2.0.0"
 )
 
@@ -28,6 +29,7 @@ templates = Jinja2Templates(directory="templates")
 # Global model variables
 traditional_model = None
 dl_model = None
+financial_chatbot = None
 
 def load_traditional_model():
     """Load the traditional ML model"""
@@ -92,9 +94,32 @@ class SpamAnalysisResult(BaseModel):
     urls: List[URLAnalysisResult] = []
     ensemble_results: Optional[Dict[str, Any]] = None
 
+def get_financial_chatbot():
+    global financial_chatbot
+    if financial_chatbot is None:
+        financial_chatbot = FinancialChatbot()
+        if not financial_chatbot.load_model():
+            # Train if model doesn't exist
+            financial_chatbot.create_training_data()
+            financial_chatbot.train()
+            financial_chatbot.save_model()
+    return financial_chatbot
+
 @app.get("/", response_class=HTMLResponse)
 async def get_home(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
+
+@app.get("/spam-detector", response_class=HTMLResponse)
+async def get_spam_detector(request: Request):
     return templates.TemplateResponse("index_dl.html", {"request": request})
+
+@app.get("/financial-chatbot", response_class=HTMLResponse)
+async def get_financial_chatbot_page(request: Request):
+    return templates.TemplateResponse("financial_chatbot.html", {"request": request})
+
+@app.get("/budget-tracker", response_class=HTMLResponse)
+async def get_budget_tracker(request: Request):
+    return templates.TemplateResponse("budget_tracker.html", {"request": request})
 
 @app.post("/api/analyze", response_model=SpamAnalysisResult)
 async def analyze_text(text_input: TextInput):
@@ -360,6 +385,49 @@ async def compare_models(text: str):
     return {
         "input_text": text,
         "model_predictions": results
+    }
+
+# Financial Chatbot Endpoints
+class FinancialQuestion(BaseModel):
+    question: str
+
+class FinancialAdviceResult(BaseModel):
+    question: str
+    answer: str
+    confidence: float
+    category: str
+    matched_question: Optional[str] = None
+    similar_questions: List[Dict[str, Any]] = []
+
+@app.post("/api/financial-advice", response_model=FinancialAdviceResult)
+async def get_financial_advice(question_input: FinancialQuestion):
+    """Get financial advice from the chatbot"""
+    chatbot = get_financial_chatbot()
+    
+    if chatbot is None:
+        return JSONResponse(
+            status_code=500,
+            content={"error": "Financial chatbot not loaded"}
+        )
+    
+    response = chatbot.get_response(question_input.question)
+    
+    return {
+        "question": question_input.question,
+        "answer": response['answer'],
+        "confidence": response['confidence'],
+        "category": response['category'],
+        "matched_question": response.get('matched_question'),
+        "similar_questions": response.get('similar_questions', [])
+    }
+
+@app.get("/api/financial-categories")
+async def get_financial_categories():
+    """Get available financial advice categories"""
+    chatbot = get_financial_chatbot()
+    return {
+        "categories": list(chatbot.categories.keys()),
+        "total_qa_pairs": len(chatbot.qa_data) if chatbot.qa_data is not None else 0
     }
 
 if __name__ == "__main__":

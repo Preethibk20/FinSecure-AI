@@ -75,7 +75,7 @@ class SpamDetectorApp {
 
     updateModelStatusUI() {
         const statusElements = {
-            'traditional': document.getElementById('traditional-status'),
+            'traditional_ml': document.getElementById('traditional-status'),
             'deep_learning': document.getElementById('deep_learning-status'),
             'ensemble': document.getElementById('ensemble-status')
         };
@@ -105,11 +105,17 @@ class SpamDetectorApp {
     }
 
     selectFirstAvailableModel() {
-        const modelOrder = ['ensemble', 'deep_learning', 'traditional'];
+        const modelOrder = ['ensemble', 'deep_learning', 'traditional_ml'];
+        const radioIds = {
+            'ensemble': 'ensemble',
+            'deep_learning': 'deep_learning',
+            'traditional_ml': 'traditional'
+        };
         
         for (const modelType of modelOrder) {
             if (this.modelStatus[modelType]?.available) {
-                const radio = document.getElementById(modelType);
+                const radioId = radioIds[modelType];
+                const radio = document.getElementById(radioId);
                 if (radio && !radio.disabled) {
                     radio.checked = true;
                     break;

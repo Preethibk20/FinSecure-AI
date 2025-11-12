@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinSecure AI - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { text-align: center; color: white; margin-bottom: 50px; }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
+        .header p { font-size: 1.1em; opacity: 0.9; }
+        .cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .feature-card:hover { transform: translateY(-10px); }
+        .card-icon { font-size: 4em; margin-bottom: 20px; display: block; }
+        .spam-card .card-icon { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .finance-card .card-icon { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .budget-card .card-icon { background: linear-gradient(135deg, #00d77f 0%, #45ebb0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-title { font-size: 2em; margin-bottom: 15px; color: #333; }
+        .card-description { font-size: 1.1em; color: #666; line-height: 1.6; margin-bottom: 25px; }
+        .card-features { list-style: none; margin-bottom: 30px; }
+        .card-features li { padding: 10px 0; color: #555; display: flex; align-items: center; gap: 10px; }
+        .card-features li i { color: #667eea; font-size: 1.2em; }
+        .card-button {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: white;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .spam-card .card-button { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .finance-card .card-button { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .budget-card .card-button { background: linear-gradient(135deg, #00d77f 0%, #45ebb0 100%); }
+        .badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-bottom: 15px; }
+        .spam-card .badge { background: rgba(245, 87, 108, 0.1); color: #f5576c; }
+        .finance-card .badge { background: rgba(79, 172, 254, 0.1); color: #4facfe; }
+        .budget-card .badge { background: rgba(0, 215, 127, 0.1); color: #00d77f; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Welcome to FinSecure AI</h1>
+            <p>Your all-in-one solution for spam detection and financial guidance</p>
+        </div>
+        <div class="cards-container">
+            <a href="/spam-detector" class="feature-card spam-card">
+                <span class="badge">🔒 Security Tool</span>
+                <i class="fas fa-shield-alt card-icon"></i>
+                <h2 class="card-title">Spam Text Detector</h2>
+                <p class="card-description">Advanced spam detection with multiple AI models including deep learning.</p>
+                <ul class="card-features">
+                    <li><i class="fas fa-check-circle"></i> Multiple AI Models (ML + DL)</li>
+                    <li><i class="fas fa-link"></i> URL Safety Analysis</li>
+                    <li><i class="fas fa-chart-bar"></i> Model Comparison</li>
+                    <li><i class="fas fa-shield-virus"></i> Real-time Protection</li>
+                </ul>
+                <div class="card-button"><i class="fas fa-search"></i> Analyze Messages</div>
+            </a>
+            <a href="/financial-chatbot" class="feature-card finance-card">
+                <span class="badge">💡 Financial Tool</span>
+                <i class="fas fa-comments-dollar card-icon"></i>
+                <h2 class="card-title">Financial Advisor</h2>
+                <p class="card-description">Get personalized financial advice from our AI advisor.</p>
+                <ul class="card-features">
+                    <li><i class="fas fa-check-circle"></i> Expert Financial Guidance</li>
+                    <li><i class="fas fa-piggy-bank"></i> Savings & Investment Tips</li>
+                    <li><i class="fas fa-chart-line"></i> Budget Planning Help</li>
+                    <li><i class="fas fa-graduation-cap"></i> Financial Education</li>
+                </ul>
+                <div class="card-button"><i class="fas fa-comments"></i> Get Advice</div>
+            </a>
+            <a href="/budget-tracker" class="feature-card budget-card">
+                <span class="badge">📊 Planning Tool</span>
+                <i class="fas fa-chart-pie card-icon"></i>
+                <h2 class="card-title">Budget Tracker</h2>
+                <p class="card-description">Track your income and expenses with visual analytics.</p>
+                <ul class="card-features">
+                    <li><i class="fas fa-check-circle"></i> Income & Expense Tracking</li>
+                    <li><i class="fas fa-bullseye"></i> Budget Goal Setting</li>
+                    <li><i class="fas fa-chart-bar"></i> Visual Analytics</li>
+                    <li><i class="fas fa-calendar-check"></i> Monthly Reports</li>
+                </ul>
+                <div class="card-button"><i class="fas fa-calculator"></i> Track Budget</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
