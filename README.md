@@ -7,6 +7,8 @@ A comprehensive spam detection system that combines traditional machine learning
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
+Try it live: https://finsecure-ai-uepz.onrender.com 
+
 ## 🚀 Features
 
 ### 🤖 Multiple AI Models
@@ -474,11 +476,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Libraries**: NLTK, pandas, numpy, matplotlib
 - **UI**: Chart.js, Font Awesome, modern CSS
 
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/yourusername/spam-text-detector/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/spam-text-detector/discussions)
-- **Documentation**: Check the `README_DL.md` for detailed technical docs
 
 ## 🔮 Future Enhancements
 
