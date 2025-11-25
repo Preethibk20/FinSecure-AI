@@ -99,7 +99,7 @@ python main.py
 ## 📊 Dataset
 
 **Required**: SMS Spam Collection Dataset
-- **Source**: [Kaggle SMS Spam Collection](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset)
+- **Source**: [UCI ML Repository SMS Spam Collection dataset](https://archive.ics.uci.edu/dataset/228/sms+spam+collection)
 - **File**: Save as `mail_data.csv` in project root
 - **Format**: CSV with columns: `Category`, `Message`
 - **Size**: ~5,572 SMS messages (ham/spam labeled)
